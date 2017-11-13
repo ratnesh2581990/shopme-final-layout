@@ -334,6 +334,8 @@
 								.on('initialized.owl.carousel translated.owl.carousel', Core.helpers.owlGetVisibleElements);
 
 			$('.carousel_in_tabs:not([class*="type"])').owlCarousel({
+				margin:20,
+				autoplayHoverPause: true,
 				autoplay: true,
 				loop: true,
 				responsive : {
@@ -353,6 +355,8 @@
 			});
 
 			$('.brands').owlCarousel({
+				autoplayHoverPause: true,
+				autoplay: true,
 				responsive : {
 					0 : {
 						items : 2
@@ -373,6 +377,8 @@
 			});
 
 			$('.brands_full_width').owlCarousel({
+				autoplayHoverPause: true,
+				autoplay: true,
 				responsive : {
 					0 : {
 						items : 2
@@ -399,6 +405,8 @@
 			});
 
 			$('.sellers_carousel, .other_products').owlCarousel({
+				autoplayHoverPause: true,
+				autoplay: true,
 				responsive : {
 					0 : {
 						items : 1
@@ -416,6 +424,8 @@
 			});
 
 			$('.carousel_of_entries').owlCarousel({
+				autoplayHoverPause: true,
+				autoplay: true,
 				responsive : {
 					0 : {
 						items : 1
@@ -433,6 +443,9 @@
 			});
 
 			$('.carousel_in_tabs.type_2, .owl_carousel.four_items').owlCarousel({
+				margin : 20,
+				autoplayHoverPause: true,
+				autoplay: true,
 				responsive : {
 					0 : {
 						items : 1
@@ -453,6 +466,9 @@
 			});
 
 			$('.carousel_in_tabs.type_3').owlCarousel({
+				margin : 20,
+				autoplayHoverPause: true,
+				autoplay: true,
 				responsive : {
 					0 : {
 						items : 1
@@ -473,6 +489,9 @@
 			});
 
 			$('.carousel_in_tabs.type_4').owlCarousel({
+				margin : 20,
+				autoplayHoverPause: true,
+				autoplay: true,
 				loop: true,
 				responsive : {
 					0 : {
@@ -494,6 +513,8 @@
 			});
 
 			$('.widgets_carousel').owlCarousel({
+				autoplayHoverPause: true,
+				autoplay: true,
 				items : 1,
 				autoHeight : true,
 				loop : true,
@@ -507,6 +528,8 @@
 			});
 
 			$('.owl_carousel.six_items').owlCarousel({
+				autoplayHoverPause: true,
+				autoplay: true,
 				responsive : {
 					0 : {
 						items : 1
@@ -531,6 +554,8 @@
 			});
 
 			$('.owl_carousel.testimonial_carousel').owlCarousel({
+				margin: 20,
+				autoplayHoverPause: true,
 				loop:true,
 				autoplay: true,
 				responsive : {
@@ -604,7 +629,9 @@
 
 			if($('.related_products').length){
 
-				$('.related_products').owlCarousel({
+				$('.related_products').owlCarousel({margin : 10,
+					autoplayHoverPause: true,
+					autoplay: true,
 					responsive : {
 						0 : {
 							items : 1
@@ -649,6 +676,7 @@
 		e.stopPropagation();
 		jQuery(this).find('.has_megamenu').toggleClass('active');
 		jQuery(this).siblings().find('.has_megamenu').removeClass('active');
+		jQuery(this).parent().parent().siblings().find('.has_megamenu').removeClass('active');
 	});
 
 	jQuery('.cats .has_megamenu').click(function(e){
@@ -679,14 +707,19 @@
 	function limit(selector, count) {
 		$(selector).each(function(){
 			var str = $(this).text();
-			var res = str.substr(0, count);
-			$(this).text(res+'...');
+			if(str.length > count){
+				var res = str.substr(0, count);
+				$(this).text(res+'...');
+			}
 		});
 	}
 
 	limit('.limit-1', 20);
-	limit(".custom_product .description > a", 35);
+	limit(".custom_product .description > a:not(.limit-2)", 35);
 	limit('.limit', 40);
+	limit('.product-title', 30);
+	limit('.limit-2', 60);
+	limit('.testimonial_carousel blockquote p', 120)
 	
 }());
 
